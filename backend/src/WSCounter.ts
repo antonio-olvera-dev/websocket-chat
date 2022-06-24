@@ -1,5 +1,5 @@
 import { IncomingMessage } from 'http';
-import { RawData, WebSocketServer } from 'ws';
+import { RawData, WebSocketServer, WebSocket } from 'ws';
 import { CounterI } from './interfaces';
 
 export class WSCounter {
@@ -15,6 +15,8 @@ export class WSCounter {
     }
 
     init() {
+
+        const connections: WebSocket[] = [];
         const wss: WebSocketServer = new WebSocketServer({
             port: 8081,
             perMessageDeflate: {
@@ -38,14 +40,19 @@ export class WSCounter {
         wss.on('connection', (ws, request: IncomingMessage) => {
 
             ws.send('Connection established successfully on de port 8081. 👍');
+            connections.push(ws);
 
             ws.on('message', (data: RawData) => {
                 console.log('received: %s', data);
             });
 
             setInterval(() => {
-                ws.send(JSON.stringify(this.counter))
-            },100);
+
+                for (const connection of connections) {
+                    connection.send(JSON.stringify(this.counter))
+                }
+
+            }, 100);
         });
 
 
