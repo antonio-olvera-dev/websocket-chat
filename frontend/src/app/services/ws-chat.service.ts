@@ -29,6 +29,18 @@ export class WsChatService {
       }
 
     };
+
+    this.socket.onclose = function (event) {
+      if (event.wasClean) {
+        console.log(`[close] Conexión cerrada limpiamente, código=${event.code} motivo=${event.reason}`);
+      } else {
+        console.log('[close] La conexión se cayó');
+      }
+    };
+
+    this.socket.onerror = function (error: any) {
+      console.log(`[error] ${error.message}`);
+    };
   }
 
   private connect() {
