@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WsCounterService } from 'src/app/services/ws-counter.service';
 
 @Component({
   selector: 'app-counter',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CounterComponent implements OnInit {
 
-  constructor() { }
+  constructor(public wsCounterService: WsCounterService) { }
 
   ngOnInit(): void {
   }
 
+  get getCounter() {
+    return this.wsCounterService.getCounter;
+  }
 }
