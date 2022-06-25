@@ -1,0 +1,13 @@
+@import "./colors.scss";
+
+.buttonPrimary {
+  background-color: $blue;
+  color: $white;
+  border: none;
+  padding: 8.5px 10px 8.5px 10px;
+  border-radius: 6px;
+
+  &:hover{
+    background-color: $blueBlack;
+  }
+}

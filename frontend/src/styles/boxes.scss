@@ -1,0 +1,47 @@
+@import "./colors.scss";
+
+.baseBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  height: fit-content;
+  width: fit-content;
+  min-height: 60px;
+  min-width: 126px;
+  border-radius: 12px;
+  border: solid;
+  border-width: 1px;
+  padding: 8px;
+
+
+  span {
+    font-size: 8px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: inherit;
+    display: inline-block;
+  }
+
+  p {
+    font-size: 12px;
+  }
+
+
+}
+
+.boxGreen {
+  @extend .baseBox;
+  background-color: $green;
+  border-color: $greenBlack;
+  border-bottom-right-radius: 0px;
+  margin-left: auto
+}
+
+.boxGray {
+  @extend .baseBox;
+  background-color: $gray;
+  border-color: $grayBlack;
+  border-bottom-left-radius: 0px;
+}

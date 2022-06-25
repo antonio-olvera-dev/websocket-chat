@@ -1,9 +1,9 @@
 <form>
 
-  <input placeholder="Name" [(ngModel)]="name" name="name" type="text">
-  <input placeholder="Message" [(ngModel)]="message" name=",message" type="text">
+  <input class="inputName" placeholder="Name" [(ngModel)]="name" name="name" type="text">
+  <input class="inputMessage" placeholder="Message" [(ngModel)]="message" name=",message" type="text">
 
-  <button type="button" (click)="sendMessage()">Send</button>
+  <button class="buttonPrimary" type="button" (click)="sendMessage()">Send</button>
 
 </form>
 
@@ -12,12 +12,13 @@
 <br>
 <br>
 
-<section>
-  <ul *ngFor="let message of wsChatService.getMessages">
+<section class="sectionChat">
 
-    <li [ngClass]="{'myChat': message.id === wsChatService.idChat}">{{message.id}}</li>
-    <li [ngClass]="{'myChat': message.id === wsChatService.idChat}">{{message.name}}</li>
-    <li [ngClass]="{'myChat': message.id === wsChatService.idChat}">{{message.message}}</li>
+  <div *ngFor="let message of wsChatService.getMessages" [ngClass]=" message.id === wsChatService.idChat ? 'boxGreen' : 'boxGray'">
 
-  </ul>
+    <span>{{message.name}}</span>
+    <p>{{message.message}}</p>
+
+  </div>
+
 </section>

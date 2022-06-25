@@ -1,0 +1,21 @@
+@import "./colors.scss";
+
+.inputDefault {
+  padding: 8px;
+  outline: none;
+  border-style: solid;
+  border-radius: 6px;
+  border-width: 2px;
+  border-color: $grayBlack;
+  font-size: 12px;
+}
+
+.inputName {
+  @extend .inputDefault;
+
+}
+
+.inputMessage {
+  @extend .inputDefault;
+
+}

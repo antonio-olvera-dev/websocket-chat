@@ -1,3 +1,18 @@
-.myChat{
-  color: green;
+@import "./../../../styles.scss";
+
+.sectionChat {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 18px;
+
+  border-radius: 12px;
+  border: solid;
+  border-width: 1px;
+  border-color: $grayBlack;
+
+  div {
+    margin-bottom: 20px;
+  }
 }
