@@ -1,15 +1,14 @@
 import { IncomingMessage } from 'http';
 import { RawData, WebSocket, WebSocketServer } from 'ws';
 import { CounterI } from './interfaces';
+import { WSCounter } from './WSCounter';
 
 export class WSChat {
 
-    public counter: CounterI = {
-        allMessagesSentFromBackend: 0,
-        allMessagesReceivedFromFrontend: 0
-    }
+    private wsCounter: WSCounter;
 
-    constructor() {
+    constructor(wsCounter: WSCounter) {
+        this.wsCounter = wsCounter;
         this.init();
     }
 
@@ -39,18 +38,18 @@ export class WSChat {
         wss.on('connection', (ws, request: IncomingMessage) => {
 
             ws.send('Connection established successfully on de port 8080. 👍');
-            this.counter.allMessagesSentFromBackend++;
+            this.wsCounter.sentFromBackend();
             connections.push(ws);
 
             ws.on('message', (data: RawData) => {
-                this.counter.allMessagesReceivedFromFrontend++;
+                this.wsCounter.receivedFromFrontend();
                 console.log('received: %s', data);
 
                 for (const connection of connections) {
                     connection.send(data.toString());
                 }
 
-                this.counter.allMessagesSentFromBackend++;
+                this.wsCounter.sentFromBackend();
             });
 
         });

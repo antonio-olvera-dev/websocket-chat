@@ -4,19 +4,18 @@ import { CounterI } from './interfaces';
 
 export class WSCounter {
 
+    private connections: WebSocket[] = [];
     private counter: CounterI = {
         allMessagesSentFromBackend: 0,
         allMessagesReceivedFromFrontend: 0
     }
 
-    constructor(counter: CounterI) {
-        this.counter = counter;
+    constructor() {
         this.init();
     }
 
     init() {
 
-        const connections: WebSocket[] = [];
         const wss: WebSocketServer = new WebSocketServer({
             port: 8081,
             perMessageDeflate: {
@@ -40,21 +39,35 @@ export class WSCounter {
         wss.on('connection', (ws, request: IncomingMessage) => {
 
             ws.send('Connection established successfully on de port 8081. 👍');
-            connections.push(ws);
+            this.connections.push(ws);
+            this.sendCounter();
 
             ws.on('message', (data: RawData) => {
                 console.log('received: %s', data);
             });
-
-            setInterval(() => {
-
-                for (const connection of connections) {
-                    connection.send(JSON.stringify(this.counter))
-                }
-
-            }, 100);
         });
 
 
+    }
+
+    public sentFromBackend(): void {
+        this.counter.allMessagesSentFromBackend++;
+        this.sendCounter();
+    }
+
+    public receivedFromFrontend(): void {
+        this.counter.allMessagesReceivedFromFrontend++;
+        this.sendCounter();
+    }
+
+    private sendCounter(): void {
+        try {
+            for (const connection of this.connections) {
+                connection.send(JSON.stringify(this.counter))
+            }
+        } catch (error) {
+            console.log(error);
+
+        }
     }
 }
