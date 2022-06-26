@@ -36,7 +36,7 @@ pwsh
 Frontend
 ```sh
 cd frontend
- npm run start
+npm run start
 ```
 Backend
 ```sh
