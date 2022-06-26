@@ -2,8 +2,12 @@
 @import "./styles/buttons.scss";
 @import "./styles/boxes.scss";
 @import "./styles/colors.scss";
+@import "./styles/scrollbar.scss";
 
 *{
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: 400;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }

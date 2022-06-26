@@ -1,0 +1,22 @@
+@import "./colors.scss";
+@import "./settings.scss";
+
+
+::-webkit-scrollbar {
+  width: var(--width-scrollbar, 0px);
+  position: fixed;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px $gray;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $blue;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: $blueBlack;
+}

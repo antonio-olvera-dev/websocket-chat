@@ -1,18 +1,56 @@
 @import "./../../../styles.scss";
 
-.sectionChat {
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-direction: column;
-  padding: 18px;
+:host {
 
-  border-radius: 12px;
-  border: solid;
-  border-width: 1px;
-  border-color: $grayBlack;
+  .sectionChat {
+    position: relative;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 18px;
+    padding-top: 0;
 
-  div {
-    margin-bottom: 20px;
+    border-radius: 12px;
+    border: solid;
+    border-width: 1px;
+    border-color: $grayBlack;
+
+    div {
+      margin-bottom: 20px;
+    }
+
+    .divChat {
+      width: 100%;
+      overflow: auto;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      flex-direction: column;
+      padding-top: 18px;
+      padding-bottom: 18px;
+    }
   }
+
+  .divMessage {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    flex-direction: row;
+
+
+    .inputMessage {
+      width: 100%;
+      margin-left: 12px;
+    }
+
+    .buttonPrimary {
+      margin-right: 12px;
+      margin-left: 12px;
+    }
+  }
+
 }

@@ -2,16 +2,19 @@ main {
   display: flex;
   flex-direction: row;
   width: 100%;
-  height: auto;
+  height: 100vh;
   min-height: 100%;
+  padding: 16px;
 }
 
-app-chat{
-width: 50%;
+app-chat {
+  width: 50%;
+  height: 80%;
+  max-height: 80%;
 
 }
 
-app-counter{
+app-counter {
   width: 50%;
 
 }
