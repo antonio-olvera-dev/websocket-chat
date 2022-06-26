@@ -6,8 +6,14 @@
   border: none;
   padding: 8.5px 10px 8.5px 10px;
   border-radius: 6px;
+  transition: 150ms;
 
   &:hover{
     background-color: $blueBlack;
+  }
+
+  &:active{
+    background-color: $blueBlack;
+    transition: 10ms;
   }
 }

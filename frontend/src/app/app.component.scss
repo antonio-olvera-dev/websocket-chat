@@ -15,6 +15,12 @@ app-chat {
 }
 
 app-counter {
-  width: 50%;
+  width: fit-content;
+  height: fit-content;
+  max-height: 80%;
+}
 
+
+.separator{
+  width: 18px;
 }

@@ -1,22 +1,19 @@
-
-
-  <input class="inputName" placeholder="Name" [(ngModel)]="name" name="name" type="text">
-
-
+<input class="inputName" placeholder="Name" [(ngModel)]="name" name="name" type="text">
 
 <br>
 <br>
 
 <section class="sectionChat">
 
-<div class="divChat">
-  <div *ngFor="let message of wsChatService.getMessages" [ngClass]=" message.id === wsChatService.idChat ? 'boxGreen' : 'boxGray'">
+  <div class="divChat">
+    <div *ngFor="let message of wsChatService.getMessages"
+      [ngClass]=" message.id === wsChatService.idChat ? 'boxGreen' : 'boxGray'">
 
-    <span>{{message.name}}</span>
-    <p>{{message.message}}</p>
+      <span>{{message.name}}</span>
+      <p>{{message.message}}</p>
 
+    </div>
   </div>
-</div>
 
 
   <div class="divMessage">
